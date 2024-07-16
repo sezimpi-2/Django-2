@@ -1,0 +1,23 @@
+{%  extends 'index.html' %}
+<header>
+
+</header>
+
+<body>
+{% block content %}
+{%for post in posts%}
+
+<div>
+  <p>{{post.image}} </p>
+  <span>  {{post.title}} </span>
+  <p> {{post.content}} </p>
+
+</div>
+
+{%endfor%}
+  {% endblock %}
+</body>
+<footer>
+    <div> Footer </div>
+</footer>
+
