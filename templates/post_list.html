@@ -1,23 +1,14 @@
-{%  extends 'index.html' %}
-<header>
+{%extends 'index.html' %}
+<header> 
 
 </header>
-
 <body>
-{% block content %}
-{%for post in posts%}
 
-<div>
-  <p>{{post.image}} </p>
-  <span>  {{post.title}} </span>
-  <p> {{post.content}} </p>
+<div> Post-list </div>
 
-</div>
 
-{%endfor%}
-  {% endblock %}
 </body>
 <footer>
     <div> Footer </div>
 </footer>
-
+    
