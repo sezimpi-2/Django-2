@@ -1,15 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from posts.models import Post
+from django.views import View
+from .models import Post
 
-def posts_view(request):
-    posts = Post.objects.all()  # {QuerySet}
-    return render(request=request, template_name = 'post_list.html', context={'posts': posts})
+class PostView(View):
+    def get(self, request, post_id=None):
+        if post_id:
+            # post_detail_view
+            post = get_object_or_404(Post, id=post_id)
+            return render(request, 'post_detail_view.html', {'post': post})
+        else:
+            # posts_view
+            posts = Post.objects.all()
+            return render(request, 'post_list.html', {'posts': posts})
+    
+    def post(self, request):
+        # post_create_view
+        return HttpResponse("OK")
 
-def post_detail_view(request, post_id):
-    post = Post.objects.get(id = post_id)
-    return render(request, 'post_detail_view.html', {'post': post})
-
-def main_page(request):
-    return render(request, "index.html")
-
+class MainPageView(View):
+    def get(self, request):
+        return render(request, "index.html")

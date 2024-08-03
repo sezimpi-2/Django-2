@@ -1,0 +1,11 @@
+{%extends 'index.html'%}
+{%block content%}
+{%csrf_token%}
+
+<from method="post" action="">
+    {%csrf_token%}
+    {{ form.as_p}}
+<button type="submit"> Зарегистрироваться </button>
+
+    </from>
+{%endblock%}
